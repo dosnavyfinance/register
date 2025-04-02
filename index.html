@@ -82,10 +82,32 @@
             </div>
         </div>
     </div>
-
+	
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+        const liffId = "2007096100-K5N7ZeMl";
+
+        liff.init({ liffId: liffId })
+            .then(() => {
+                if (liff.isLoggedIn()) {
+                    liff.getProfile().then(profile => {
+                        document.getElementById("userid").value = profile.userId;
+                        document.getElementById("display").value = profile.displayName;
+                        document.getElementById("profile").value = profile.pictureUrl;
+                        document.getElementById("status").value = profile.statusMessage;
+                    });
+                } else {
+                    liff.login({ redirectUri: "https://banknavy48.github.io/liffgoogleFORM/" });
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert("เกิดข้อผิดพลาดในการเริ่มต้น LIFF");
+            });
+    </script>
 </body>
 </html>
