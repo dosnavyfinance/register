@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webapp</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script type="text/javascript">var submitted=false</script>
+    <iframe name="hiddenConfim" id="hiddenConfim" style="display: none;" onload="if(submitted){window.location='submit.html';}"></iframe>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h1>แบบฟอร์มลงทะเบียนผู้มาเข้าสอบ</h1>
+                        <p>กรุณากรอกข้อมูลให้ถูกต้อง หากผิดพลาดอาจทำให้ไม่สามารถตรวจสอบผลคะแนนในการสอบครั้งนี้ได้</p>
+                    </div>
+                    <div class="card-body">
+                        <form action="https://docs.google.com/forms/d/e/1FAIpQLScq9I6uvmsRek2vp2FgJ26K1pCYIwIqkx5da31G6SiXouxgFA/formResponse" method="POST" target="hiddenConfim" onsubmit="submitted=true">
+                            
+                            <!--สำหรับฟอร์มแบบ input text-->
+                            <div class="form-group">
+                                <label for="entry.887374161">ชื่อ - นามสกุล (ไม่ต้องระบุยศ)</label>
+                                <input type="text" class="form-control" id="name" name="entry.887374161" required placeholder=" ตัวอย่าง: นาวา นาวี ">
+                            </div>
+
+                            <!--สำหรับฟอร์มแบบ input text-->
+                            
+                            <div class="form-group">
+                                <label for="entry.572758845">หมายเลขกลาโหม</label>
+                                <input type="text" class="form-control" id="student-id" name="entry.572758845" pattern="\d{1,10}" placeholder="ใส่เลขกลาโหม 10 หลัก" required >
+                            </div>
+
+							<!--สำหรับฟอร์มแบบ input text-->
+                            
+                            <div class="form-group">
+                                <label for="entry.1206194030">เบอร์โทร</label>
+                                <input type="text" class="form-control" id="phone" name="entry.1206194030" pattern="\d*" placeholder="ใส่เบอร์โทร" required >
+                            </div>
+
+                            <!--สำหรับฟอร์มแบบ input Dropdown-->
+                            
+                            <div class="form-group">
+                                <label for="entry.10473571">สอบเลื่อนฐานะในอัตรา</label>
+                                <select class="form-control" id="sex" name="entry.10473571" required>
+                                    <option value="" disabled selected>เลือกยศ</option>
+                                    <option value="พันจ่า">พันจ่า</option>
+                                    <option value="เรือตรี">เรือตรี</option>
+                                </select>
+                            </div>
+                            
+                            <!--สำหรับฟอร์มแบบ input Multiple choice grid-->
+                            
+                            <h2><label for="test">สำหรับ Admin</label></h2>
+                                <div class="form-group">
+                                <label for="entry.302734158">userID</label>
+                                <input type="text" class="form-control" id="uID" name="entry.302734158" required>
+								</div>
+								<div class="form-group">
+                                <label for="entry.283487238">displayName</label>
+                                <input type="text" class="form-control" id="dn" name="entry.283487238" required>
+								</div>
+								<div class="form-group">
+                                <label for="entry.1224446691">profileImage</label>
+                                <input type="text" class="form-control" id="pi" name="entry.1224446691" required>
+								</div>
+								<div class="form-group">
+                                <label for="entry.481745043">statusMessage</label>
+                                <input type="text" class="form-control" id="sm" name="entry.481745043" required>
+								</div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
