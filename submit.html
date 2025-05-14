@@ -21,6 +21,32 @@
         // ล้าง localStorage ถ้าไม่อยากให้ค้าง
         localStorage.removeItem("submittedName");
         localStorage.removeItem("submittedStudentId");
+        
+        // เมื่อกดปุ่มเช็คห้องสอบ
+        document.getElementById("check-room-btn").addEventListener("click", function () {
+            if (!studentId) {
+                alert("ไม่พบเลขกลาโหม");
+                return;
+            }
+
+            fetch(`https://script.google.com/macros/s/AKfycbyvqIAzlfwK-bu5BUw8a06IoPXJcyyVrZjCri4ULEvde0V2ghIuOT3HlXUeUCLfKk_oAw/exec?studentId=${studentId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultElement = document.getElementById("room-result");
+                    if (data.error) {
+                        resultElement.textContent = "ไม่พบข้อมูลในระบบ";
+                        resultElement.style.color = "red";
+                    } else {
+                        resultElement.textContent = `ลำดับที่: ${data.numNO}`;
+                        resultElement.textContent = `ห้องสอบที่: ${data.room}`;
+                        resultElement.style.color = "green";
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert("เกิดข้อผิดพลาดในการเชื่อมต่อ");
+                });
+        });
     });
 </script>
     <div class="container mt-5">
@@ -35,6 +61,8 @@
                         <p style="text-align: center">ขอบคุณสำหรับการกรอกข้อมูล</p>
                         <p style="text-align: center" id="display-name"></p>
                         <p style="text-align: center" id="display-id"></p>
+                        <button id="check-room-btn" class="btn btn-info btn-block mt-3">เช็คห้องสอบ</button>
+                        <p id="room-result" class="text-center mt-3 font-weight-bold"></p>
                     </div>
                 </div>
             </div>
@@ -44,6 +72,7 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
 </body>
 </html>
