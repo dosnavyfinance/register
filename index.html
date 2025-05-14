@@ -109,5 +109,15 @@
                 alert("เกิดข้อผิดพลาดในการเริ่มต้น LIFF");
             });
     </script>
+<script>
+    // เก็บค่าจาก input ลง localStorage ก่อน submit
+    document.querySelector("form").addEventListener("submit", function() {
+        const name = document.getElementById("name").value;
+        const studentId = document.getElementById("student-id").value;
+
+        localStorage.setItem("submittedName", name);
+        localStorage.setItem("submittedStudentId", studentId);
+    });
+</script>
 </body>
 </html>
