@@ -37,8 +37,10 @@
                         resultElement.textContent = "ไม่พบข้อมูลในระบบ";
                         resultElement.style.color = "red";
                     } else {
-                        resultElement.textContent = `ลำดับที่: ${data.numNO}`;
-                        resultElement.textContent = `ห้องสอบที่: ${data.room}`;
+                        resultElement.innerHTML = `
+                        ลำดับที่: <strong>${data.numNO}</strong><br>
+                        ห้องสอบที่: <strong>${data.room}</strong>
+                        `;
                         resultElement.style.color = "green";
                     }
                 })
