@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const name = localStorage.getItem("submittedName") || "";
+        const studentId = localStorage.getItem("submittedStudentId") || "";
+
+        // แสดงในหน้า
+        document.getElementById("display-name").textContent = `ชื่อ: ${name}`;
+        document.getElementById("display-id").textContent = `เลขกลาโหม: ${studentId}`;
+
+        // ล้าง localStorage ถ้าไม่อยากให้ค้าง
+        localStorage.removeItem("submittedName");
+        localStorage.removeItem("submittedStudentId");
+    });
+</script>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -19,6 +33,8 @@
                     <div class="card-body">
                         <h1 style="text-align: center">สำเร็จแล้ว!</h1>
                         <p style="text-align: center">ขอบคุณสำหรับการกรอกข้อมูล</p>
+                        <p style="text-align: center" id="display-name"></p>
+                        <p style="text-align: center" id="display-id"></p>
                     </div>
                 </div>
             </div>
@@ -28,6 +44,6 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>   
 </body>
 </html>
